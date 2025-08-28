@@ -1,0 +1,60 @@
+﻿
+@model DTO.UserDTO
+<div class="box-body">
+    <label>User Name</label>
+    @Html.TextBoxFor(x => x.Username, new { @class = "form-control", @placeholder = "User Name" })
+  <br />
+    @Html.ValidationMessageFor(x => x.Username)
+</div>
+<br />
+<div class="from-group">
+    <label>Password</label>
+    @Html.TextBoxFor(x => x.Password, new { @class = "from-control", @placeholder = "Password" })
+   <br />
+    @Html.ValidationMessageFor(x => x.Password)
+</div>
+<br />
+<div class="form-check">
+    <input type="checkbox" class="form-check-input" name="isAdmin" checked="@Model.isAdmin" value="true">
+    <label class="form-check-label">is Admin?</label>
+</div>
+<br />
+
+<div class="from-group">
+    @Html.LabelFor(x => x.UserImage)
+    <br />
+    <input type="file" name="UserImage" accept="image/gif,image/jpeg,image/png,image/jpg"
+           onchange="$('#UserImage')[0].src = window.URL.createObjectURL(this.files[0])" />
+
+    <br />
+
+    @if (Model != null && Model.Imagepath != null)
+    {
+        <br />
+        <img src="~/Areas/Admin/Content/SocialMediaImages/@Model.Imagepath" width="300" height="200" />
+    }
+    else
+    {
+        <img src="" width="300" height="200" id="UserImage" />
+    }
+</div>
+<br />
+<div class="from-group">
+    <label>Name</label>
+    @Html.TextBoxFor(x => x.Name, new { @class = "from-control", @placeholder = "Name" })
+   <br />
+    @Html.ValidationMessageFor(x => x.Name)
+</div>
+<br />
+<div class="from-group">
+    <label>Email</label>
+    @Html.TextBoxFor(x => x.Email, new { @class = "from-control", @placeholder = "E-mail" })
+  <br />
+    @Html.ValidationMessageFor(x => x.Email)
+</div>
+<input type="number" hidden name="ID" value="@Model.ID"/>
+<div class="card-footer">
+    <button class="btn btn-primary" type="submit">Save</button>
+</div>
+
+
